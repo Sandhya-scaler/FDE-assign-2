@@ -1,0 +1,70 @@
+{
+  "files": {
+    "data/raw/api/industry_indicators_20260927.json": {
+      "completeness": "paged row count == server-side count(*)",
+      "dataset": "v6kb-cqej",
+      "expected_rows": 197,
+      "kind": "api_snapshot",
+      "retrieved_at": "2026-09-27T15:02:21",
+      "rows": 197,
+      "sha256": "b835e9cc9710c65bc9f87e1c310fbf75393af4e513648bdc24e8ac5c6a4135ba",
+      "source_url": "https://data.cityofnewyork.us/resource/v6kb-cqej.json",
+      "where": "license_class='Yellow'"
+    },
+    "data/raw/api/taxi_zones_20260927.json": {
+      "completeness": "paged row count == server-side count(*)",
+      "dataset": "8meu-9t5y",
+      "expected_rows": 263,
+      "kind": "api_snapshot",
+      "retrieved_at": "2026-09-27T15:02:18",
+      "rows": 263,
+      "sha256": "8d38f73f6eeaca243f278ef9f9ac9abd05d2b612e3978133cf261ca88f81a99e",
+      "source_url": "https://data.cityofnewyork.us/resource/8meu-9t5y.json",
+      "where": null
+    },
+    "data/raw/reference/taxi_zone_lookup.csv": {
+      "bytes": 12331,
+      "completeness": "bytes == Content-Length; row count recorded; IDs checked against API in model stage",
+      "etag": "c6064b7c144c716450641f769659d178",
+      "expected_bytes": 12331,
+      "kind": "reference_csv",
+      "last_modified": "Thu, 22 Feb 2024 21:33:00 GMT",
+      "retrieved_at": "2026-09-27T15:00:26",
+      "rows": 265,
+      "sha256": "1a99e105092230f8620f301edcca7f80d3080642ff404d28ed957d3fa222c8ed",
+      "source_url": "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
+    },
+    "data/raw/trips/yellow_tripdata_2024-01.parquet": {
+      "bytes": 49961641,
+      "completeness": "bytes == Content-Length; parquet footer readable; required columns present",
+      "etag": "d6ebae95a45f284994e283e2df97c06f-3",
+      "expected_bytes": 49961641,
+      "kind": "trip_parquet",
+      "last_modified": "Thu, 21 Mar 2024 15:35:44 GMT",
+      "parquet_rows": 2964624,
+      "retrieved_at": "2026-09-27T15:00:38",
+      "sha256": "c4d59da7bbc8abaeeeb1727947ee93d9891a71acb42854bd80db1571b2030510",
+      "source_month": "2024-01",
+      "source_url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2024-01.parquet",
+      "unexpected_columns": []
+    },
+    "data/raw/trips/yellow_tripdata_2025-01.parquet": {
+      "bytes": 59158238,
+      "completeness": "bytes == Content-Length; parquet footer readable; required columns present",
+      "etag": "3f99a46606c0c7e76a386f81167d8e15-12",
+      "expected_bytes": 59158238,
+      "kind": "trip_parquet",
+      "last_modified": "Wed, 23 Apr 2025 16:31:58 GMT",
+      "parquet_rows": 3475226,
+      "retrieved_at": "2026-09-27T15:01:08",
+      "sha256": "9af277e4c0d3f9deb30644da822981e1e7df6af58313170fd3aa8a474485488a",
+      "source_month": "2025-01",
+      "source_url": "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2025-01.parquet",
+      "unexpected_columns": []
+    }
+  },
+  "latest": {
+    "industry_indicators": "data/raw/api/industry_indicators_20260927.json",
+    "taxi_zones": "data/raw/api/taxi_zones_20260927.json"
+  }
+}

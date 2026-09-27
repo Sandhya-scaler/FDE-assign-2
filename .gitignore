@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# raw data is preserved locally but too large for git; manifest.json is committed as evidence
+data/raw/trips/
+data/raw/reference/
+data/raw/api/
+warehouse/
+logs/
+# assignment brief (course material)
+FDE_Assignment2.pdf

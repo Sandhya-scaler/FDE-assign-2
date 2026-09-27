@@ -1,0 +1,37 @@
+# Pipeline configuration. Every threshold used to accept/reject data lives here,
+# so that a reviewer can see (and challenge) each judgement call in one place.
+
+[run]
+# Two monthly datasets: Jan 2024 (baseline) vs Jan 2025 (congestion pricing began 2025-01-05)
+months = ["2024-01", "2025-01"]
+
+[sources]
+trip_url_template = "https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{month}.parquet"
+zone_lookup_url = "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
+socrata_base = "https://data.cityofnewyork.us/resource"
+zones_dataset = "8meu-9t5y"                 # NYC Taxi Zones (TLC, via NYC Open Data)
+industry_indicators_dataset = "v6kb-cqej"   # TLC Industry Indicators (monthly, per license class)
+http_timeout_s = 120
+http_retries = 4
+api_page_size = 1000
+
+[validation]
+min_duration_s = 60          # < 1 min: meter start/stop or cancelled trips, not a real journey
+max_duration_s = 10800       # > 3 h: meter left running
+max_distance_mi = 100        # beyond any in-region yellow cab trip
+max_speed_mph = 65           # above NYC highway limits end-to-end = bad clock or odometer
+amount_tolerance = 0.01
+
+[gates]
+# "fail" gates block publishing a month's metrics; "warn" gates are reported only.
+min_valid_rate = 0.85                 # fail: if >15% of rows are excluded, the source changed
+min_day_share_of_median = 0.25        # fail: any calendar day with < 25% of median daily volume
+max_reconciliation_diff = 0.05        # warn: our trips/day vs TLC published trips/day
+max_duration_reconciliation_diff = 0.10  # warn: our mean minutes/trip vs TLC published
+
+[metrics]
+core_service_zone = "Yellow Zone"     # Manhattan core, per TLC zone lookup
+daytime_start_hour = 7
+daytime_end_hour = 19                 # exclusive
+airport_zone_ids = [1, 132, 138]      # EWR, JFK, LGA
+jfk_zone_id = 132
